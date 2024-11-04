@@ -1,1 +1,7 @@
-<p>list-page works!</p>
+<ul>
+    @for (hero of heroes; track $index) {
+        <li class="text-white">
+            {{ hero.superhero }}
+        </li>
+    }
+</ul>
