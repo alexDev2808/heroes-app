@@ -3,11 +3,12 @@ import { Hero } from '../../interfaces/hero.interface';
 import { MaterialModule } from '../../../material/material.module';
 import { SlicePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { HeroImagePipe } from '../../pipes/hero-image.pipe';
 
 @Component({
   selector: 'heroes-hero-card',
   standalone: true,
-  imports: [MaterialModule, SlicePipe, RouterLink],
+  imports: [MaterialModule, SlicePipe, RouterLink, HeroImagePipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
