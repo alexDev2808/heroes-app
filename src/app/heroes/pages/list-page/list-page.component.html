@@ -1,7 +1,10 @@
-<ul>
-    @for (hero of heroes; track $index) {
-        <li class="text-white">
-            {{ hero.superhero }}
-        </li>
+<h1>Listado de Heroes</h1>
+<mat-divider></mat-divider>
+
+<div class="grid mb-8 pt-2">
+    @for (heroe of heroes; track $index) {
+        <div class="col-12 sm:col-4 md:col-3 xl:col-2">
+            <heroes-hero-card [hero]="heroe"></heroes-hero-card>
+        </div>
     }
-</ul>
+</div>

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { MaterialModule } from '../../../material/material.module';
+import { CardComponent } from '../../components/card/card.component';
 
 @Component({
   selector: 'app-list-page',
   standalone: true,
-  imports: [],
+  imports: [MaterialModule, CardComponent],
   templateUrl: './list-page.component.html',
   styles: ``
 })
