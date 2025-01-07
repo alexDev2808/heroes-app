@@ -3,11 +3,18 @@ import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Hero } from '../../interfaces/hero.interface';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../material/material.module';
+import { HeroImagePipe } from '../../pipes/hero-image.pipe';
 
 @Component({
   selector: 'app-hero-page',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    HeroImagePipe
+  ],
   templateUrl: './hero-page.component.html',
   styles: ``
 })
@@ -32,5 +39,9 @@ export class HeroPageComponent implements OnInit {
       this.hero = hero
       return
     })
+  }
+
+  goBack(): void {
+    this.router.navigateByUrl('heroes/list')
   }
 }
