@@ -39,12 +39,12 @@ export class HeroesService {
     return this.http.patch<Hero>(`${ this.baseURL }/heroes/${ hero.id }`, hero );
   }
 
-  deleteHero( hero: Hero ): Observable<boolean> {
+  deleteHeroById( id: string ): Observable<boolean> {
     
-    return this.http.delete(`${ this.baseURL }/heroes/${ hero.id }`)
+    return this.http.delete(`${ this.baseURL }/heroes/${ id }`)
             .pipe(
-              catchError( err => of(false)),
-              map( resp => true)
+              map( resp => true),
+              catchError( err => of(false))
             )
   }
   

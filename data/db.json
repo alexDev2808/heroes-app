@@ -9,20 +9,13 @@
   "heroes": [
     {
       "id": "dc-batman",
-      "superhero": "Batman",
+      "superhero": "Edward",
       "publisher": "DC Comics",
-      "alter_ego": "angular",
+      "alter_ego": "crepusculo",
       "first_appearance": "Detective Comics #27",
       "characters": "Bruce Wayne",
-      "alt_img": "https://wallpapercat.com/w/full/b/b/e/34907-2160x3840-phone-4k-the-batman-2022-background-photo.jpg"
-    },
-    {
-      "id": "dc-superman",
-      "superhero": "Superman",
-      "publisher": "DC Comics",
-      "alter_ego": "Kal-El",
-      "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "alt_img": "https://wallpapercat.com/w/full/b/b/e/34907-2160x3840-phone-4k-the-batman-2022-background-photo.jpg",
+      "superheroe": "Edward"
     },
     {
       "id": "dc-flash",
@@ -79,14 +72,6 @@
       "alter_ego": "Dan Garret",
       "first_appearance": "Mystery Men Comics #1",
       "characters": "Dan Garret, Ted Kord, Jaime Reyes"
-    },
-    {
-      "id": "dc-black",
-      "superhero": "Black Canary",
-      "publisher": "DC Comics",
-      "alter_ego": "Dinah Drake",
-      "first_appearance": "Flash Comics #86",
-      "characters": "Dinah Drake, Dinah Lance"
     },
     {
       "id": "marvel-spider",
@@ -151,14 +136,6 @@
       "alter_ego": "Clinton Francis Barton",
       "first_appearance": "Tales of Suspense #57",
       "characters": "Clinton Francis Barton"
-    },
-    {
-      "id": "marvel-cyclops",
-      "superhero": "Cyclops",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Scott Summers",
-      "first_appearance": "X-Men #1",
-      "characters": "Scott Summers"
     },
     {
       "id": "marvel-silver",

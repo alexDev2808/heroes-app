@@ -15,7 +15,7 @@
                             matInput
                             type="text"
                             required
-                            formControlName="superheroe"
+                            formControlName="superhero"
                         >
                     </mat-form-field>
                     <mat-form-field class="col-12 sm:col-6">
@@ -79,6 +79,7 @@
                     *ngIf="currentHero.id"
                     mat-flat-button
                     color="warn"
+                    (click)="onDeleteHero()"
                     >
                         Borrar
                     </button>
