@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../../material/material.module';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { HeroImagePipe } from '../../pipes/hero-image.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-page',
@@ -18,7 +21,7 @@ import { HeroImagePipe } from '../../pipes/hero-image.pipe';
   templateUrl: './new-page.component.html',
   styles: ``
 })
-export class NewPageComponent {
+export class NewPageComponent implements OnInit {
 
   public heroForm = new FormGroup({
     id: new FormControl(''),
@@ -45,7 +48,26 @@ export class NewPageComponent {
     },
   ]
 
-  constructor( public heroesService: HeroesService ) {}
+  constructor( 
+    private heroesService: HeroesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private snackbar: MatSnackBar
+   ) {}
+
+  ngOnInit(): void {   
+    if( !this.router.url.includes('edit') ) return;
+
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this.heroesService.getHeroById( id ))
+      ).subscribe( hero => {
+        if( !hero ) return this.router.navigateByUrl('/');
+
+        this.heroForm.reset( hero );
+        return;
+      })
+  }
 
   get currentHero(): Hero {
     const hero =  this.heroForm.value as Hero;
@@ -55,6 +77,28 @@ export class NewPageComponent {
   onSubmit() {
     if( this.heroForm.invalid ) return;
 
-    // this.heroesService.updateHero( this.heroForm.value )
+    if( this.currentHero.id ) {
+      this.heroesService.updateHero( this.currentHero )
+        .subscribe( hero => {
+          this.showSnackbar(`${hero.superhero} updated!`);
+
+        });
+
+        return;
+    }
+
+    this.heroesService.addHero( this.currentHero )
+      .subscribe( hero => {
+        // this.router.navigate(['/heroes/edit', hero.id])
+        this.router.navigate(['/heroes/list'])
+        this.showSnackbar(`${hero.superhero} created!`);
+      });
+    
+  }
+
+  showSnackbar( message: string ): void {
+    this.snackbar.open( message, 'Hecho', {
+      duration: 2500,
+    })
   }
 }
